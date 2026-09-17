@@ -1,0 +1,30 @@
+.q-document-theme { scroll-behavior: auto; }
+.q-document-theme body { background: var(--q-background); }
+.q-document { width: min(760px, calc(100% - 80px)); margin-inline: auto; padding-block: 36px 56px; overflow-wrap: anywhere; }
+.q-document-intro .back-link { margin-bottom: 24px; color: var(--q-muted); font-size: 13px; }
+.q-document-intro .eyebrow { color: var(--q-muted); margin-bottom: 8px; }
+.q-document-intro h1 { font-size: clamp(28px, 4vw, 38px); line-height: 1.35; margin: 0 0 24px; }
+.q-document-body { font-size: 16px; line-height: 1.9; }
+.q-document-body p { line-height: inherit; margin-bottom: 16px; }
+.q-document-body ul, .q-document-body ol { padding-left: 1.4em; margin-block: 12px 20px; }
+.q-document-body li { margin-block: 8px; }
+.q-document-body section { border-top: 1px solid var(--q-border); padding-block: 28px 12px; scroll-margin-top: 24px; }
+.q-document-body h2 { font-family: inherit; font-size: 21px; font-weight: 600; letter-spacing: 0; line-height: 1.5; margin-bottom: 16px; }
+.q-document-body h3 { font-family: inherit; font-size: 17px; font-weight: 600; letter-spacing: 0; line-height: 1.6; margin: 24px 0 8px; }
+.q-document-body a, .q-document-links a { text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--q-aqua); }
+.q-document-summary { padding: 20px 24px; border: 1px solid var(--q-border); border-radius: 12px; background: var(--q-surface); }
+.q-document-meta { display: flex; flex-wrap: wrap; gap: 16px 32px; margin: 0 0 24px; font-size: 13px; }
+.q-document-meta dt { color: var(--q-muted); }
+.q-document-meta dd { margin: 2px 0 0; }
+.q-document-toc { padding: 8px 0 24px; }
+.q-document-toc ol { columns: 2; column-gap: 32px; font-size: 14px; }
+.q-document-toc li { break-inside: avoid; }
+.q-document-links { display: flex; flex-wrap: wrap; gap: 20px 28px; font-size: 13px; border-top: 1px solid var(--q-border); margin-top: 24px; padding-top: 24px; color: var(--q-muted); }
+@media (max-width: 600px) {
+  .q-document { width: calc(100% - 40px); padding-block: 28px 40px; }
+  .q-document-body { font-size: 15px; }
+  .q-document-body h2 { font-size: 20px; }
+  .q-document-summary { padding: 16px; }
+  .q-document-toc ol { columns: 1; }
+  .q-document-meta { gap: 12px 20px; }
+}

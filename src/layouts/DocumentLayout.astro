@@ -1,5 +1,6 @@
 ---
-import BaseLayout from "./BaseLayout.astro";
+import QianliLayout from "./QianliLayout.astro";
+import "../styles/qianli-document.css";
 interface Props {
   title: string;
   english: string;
@@ -8,19 +9,26 @@ interface Props {
 const { title, english, description } = Astro.props;
 ---
 
-<BaseLayout
+<QianliLayout
   title={`${title} — 潜历 · Redox Studio`}
   description={description}
-  noindex
+  document
 >
-  <header class="page-intro document-intro">
+  <div class="q-document">
+  <header class="q-document-intro">
     <a class="back-link" href="/qianli/">
       ← 潜历
     </a>
     <p class="eyebrow">{english}</p>
     <h1>{title}</h1>
   </header>
-  <div class="document">
+  <article class="q-document-body">
     <slot />
+  </article>
+  <nav class="q-document-links" aria-label="潜历相关页面">
+    <a href="/qianli/">返回潜历</a>
+    <a href="/qianli/privacy/">隐私政策</a>
+    <a href="/qianli/support/">支持与帮助</a>
+  </nav>
   </div>
-</BaseLayout>
+</QianliLayout>

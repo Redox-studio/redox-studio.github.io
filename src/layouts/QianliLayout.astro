@@ -2,17 +2,27 @@
 import "../styles/global.css";
 import "../styles/qianli-tokens.css";
 import "../styles/qianli.css";
+interface Props {
+  title?: string;
+  description?: string;
+  document?: boolean;
+}
+const {
+  title = "潜历 — 什么时候，去哪潜？",
+  description = "什么时候，去哪潜？潜历把季节、签证、交通和行程放在一起，帮你决定下一次去哪。为 iPhone 设计的潜水目的地工具。",
+  document = false,
+} = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 <!doctype html>
-<html lang="zh-CN" class="qianli-theme qianli-colors">
+<html lang="zh-CN" class:list={["qianli-theme", "qianli-colors", { "q-document-theme": document }]}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="什么时候，去哪潜？潜历把季节、签证、交通和行程放在一起，帮你决定下一次去哪。为 iPhone 设计的潜水目的地工具。" />
+    <meta name="description" content={description} />
     <meta name="theme-color" content="#061216" />
     <link rel="canonical" href={canonical} />
-    <title>潜历 — 什么时候，去哪潜？</title>
+    <title>{title}</title>
   </head>
   <body>
     <a class="skip-link" href="#main">跳至主要内容</a>
