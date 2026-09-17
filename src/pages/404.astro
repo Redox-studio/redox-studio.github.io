@@ -1,0 +1,14 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+<BaseLayout title="页面不存在 — Redox Studio" description="这里没有东西。返回 Redox Studio，看看我们正在做的作品。" canonical="/404.html" noindex>
+  <section class="page-intro not-found">
+    <p class="eyebrow">404</p>
+    <h1>这里没有东西。</h1>
+    <a class="text-link" href="/">返回 Redox Studio <span aria-hidden="true">→</span></a>
+  </section>
+</BaseLayout>
+<style>
+  .not-found { min-height: 60vh; }
+  .not-found h1 { font-size: clamp(2rem, 6vw, 5rem); }
+</style>

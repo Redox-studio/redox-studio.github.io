@@ -1,0 +1,20 @@
+---
+interface Props {
+  name: string;
+  alt: string;
+  sizes?: string;
+  priority?: boolean;
+}
+const {
+  name, alt, sizes = "(max-width: 400px) calc(100vw - 40px), 360px", priority = false,
+} = Astro.props;
+const base = `/assets/qianli/web/${name}-final`;
+---
+<img
+  src={`${base}-840.webp`}
+  srcset={`${base}-480.webp 480w, ${base}-840.webp 840w, ${base}-1206.webp 1206w`}
+  {sizes} {alt} width="1206" height="2622"
+  loading={priority ? "eager" : "lazy"}
+  fetchpriority={priority ? "high" : undefined}
+  decoding="async"
+/>

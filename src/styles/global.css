@@ -508,3 +508,10 @@ h3 {
   line-height: 1.6;
   letter-spacing: -0.03em;
 }
+
+/* Make inline contact links recognizable without relying on color. */
+.about-body a[href^="mailto:"] {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  overflow-wrap: anywhere;
+}

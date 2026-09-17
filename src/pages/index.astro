@@ -8,6 +8,13 @@ import { products } from "../data/products";
 <BaseLayout
   title="Redox Studio"
   description="做我们自己想用的 App，也做我们自己想玩的游戏。这里放着我们两个人真正做出来，并且愿意继续做下去的东西。"
+  structuredData={{
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Redox Studio",
+    url: Astro.site?.href,
+    email: "hello@redox.studio",
+  }}
 >
   <section class="home-hero" aria-labelledby="home-title">
     <p class="eyebrow">Independent studio</p>

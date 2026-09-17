@@ -1,12 +1,13 @@
 ---
 import QianliLayout from "../../layouts/QianliLayout.astro";
 import Screenshot from "../../components/QianliScreenshot.astro";
+import QianliImage from "../../components/QianliImage.astro";
 ---
 <QianliLayout>
   <section class="q-hero q-wrap" aria-labelledby="q-title">
     <div class="q-hero-copy">
       <div class="q-identity">
-        <img src="/assets/qianli/appicon-1024.png" alt="潜历 App 图标" width="1024" height="1024" class="q-icon" />
+        <img src="/assets/qianli/web/appicon-192.webp" alt="潜历 App 图标" width="192" height="192" class="q-icon" loading="eager" decoding="async" />
         <div><p class="q-name">潜历</p><p class="q-label">Qianli for iPhone</p></div>
       </div>
       <h1 id="q-title">什么时候，<br />去哪潜？</h1>
@@ -16,7 +17,7 @@ import Screenshot from "../../components/QianliScreenshot.astro";
     </div>
     <div class="q-hero-visual">
       <div class="q-hero-crop">
-        <img src="/assets/qianli/calendar-home-final.png" alt="潜历月历首页局部：从九月出发，查看全球潜水季节" width="1206" height="2622" fetchpriority="high" loading="eager" />
+        <QianliImage name="calendar-home" alt="潜历月历首页局部：从九月出发，查看全球潜水季节" sizes="(max-width: 430px) calc(100vw - 80px), (max-width: 600px) 350px, (max-width: 800px) 42vw, (max-width: 1100px) 36vw, 410px" priority />
       </div>
       <p class="q-visual-note"><span aria-hidden="true">01 /</span> 从一个月份，找到下一站。</p>
     </div>
@@ -85,7 +86,7 @@ import Screenshot from "../../components/QianliScreenshot.astro";
     <p class="q-kicker">下一站，等你决定</p>
     <h2 id="final-title">下一次下水，<br />从这里开始。</h2>
     <div class="q-identity">
-      <img src="/assets/qianli/appicon-1024.png" alt="" width="1024" height="1024" class="q-icon" loading="lazy" decoding="async" />
+      <img src="/assets/qianli/web/appicon-192.webp" alt="" width="192" height="192" class="q-icon" loading="lazy" decoding="async" />
       <div><p class="q-name">潜历</p><p class="q-label">Qianli for iPhone</p></div>
     </div>
     <button class="q-store" type="button" disabled>App Store · 即将上线</button>

@@ -1,14 +1,9 @@
 ---
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import SEO, { type Props as SEOProps } from "../components/SEO.astro";
 import "../styles/global.css";
-interface Props {
-  title: string;
-  description: string;
-  noindex?: boolean;
-}
-const { title, description, noindex = false } = Astro.props;
-const canonical = new URL(Astro.url.pathname, Astro.site);
+interface Props extends SEOProps {}
 ---
 
 <!doctype html>
@@ -16,18 +11,15 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content={description} />
     <meta name="theme-color" content="#f5f4ef" />
-    {noindex && <meta name="robots" content="noindex, follow" />}
-    <link rel="canonical" href={canonical} />
-    <title>{title}</title>
+    <SEO {...Astro.props} />
   </head>
   <body>
     <a class="skip-link" href="#main">
       跳至主要内容
     </a>
     <Header />
-    <main id="main" class="wrap">
+    <main id="main" class="wrap" tabindex="-1">
       <slot />
     </main>
     <Footer />

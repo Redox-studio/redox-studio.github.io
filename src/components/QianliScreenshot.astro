@@ -1,4 +1,5 @@
 ---
+import QianliImage from "./QianliImage.astro";
 interface Props {
   name: string;
   alt: string;
@@ -8,6 +9,6 @@ interface Props {
 const { name, alt, caption, number } = Astro.props;
 ---
 <figure class="q-screen">
-  <img src={`/assets/qianli/${name}-final.png`} alt={alt} width="1206" height="2622" loading="lazy" decoding="async" />
+  <QianliImage {name} {alt} />
   <figcaption><span>{number}</span>{caption}</figcaption>
 </figure>

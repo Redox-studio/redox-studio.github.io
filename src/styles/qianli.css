@@ -35,10 +35,12 @@
 .q-screen img { display: block; width: 100%; height: auto; border: 1px solid var(--q-border); border-radius: 26px; box-shadow: 0 12px 32px rgb(0 0 0 / 12%); }
 .q-screen figcaption { display: flex; align-items: baseline; gap: 14px; font-size: 12px; line-height: 1.7; color: var(--q-muted); margin-top: 20px; }
 .q-screen figcaption span { font: 10px ui-monospace, monospace; color: var(--q-faint); }
+/* Small labels on raised panels need the existing muted text color for contrast. */
+.q-visual-note span, .q-wildlife .q-screen figcaption span { color: var(--q-muted); }
 .q-time-screens > :last-child { margin-top: 112px; }
 .q-planner-screens { grid-template-columns: repeat(2, minmax(0, 360px)); gap: 48px; }
 .q-planner-screens > :last-child { margin-top: 64px; }
-.q-wildlife { margin-top: 96px; padding: 48px 64px; display: grid; grid-template-columns: 1fr 270px; gap: 64px; align-items: center; background: var(--q-surface); border: 1px solid var(--q-border); border-radius: 28px; }
+.q-wildlife { width: min(100%, 768px); margin: 80px auto 0; padding: 36px 40px; display: grid; grid-template-columns: minmax(0, 1fr) 250px; gap: 40px; align-items: center; background: var(--q-surface); border: 1px solid var(--q-border); border-radius: 28px; }
 .q-wildlife h3 { font-size: clamp(32px, 3.2vw, 44px); margin: 24px 0 16px; }
 .q-trio { display: grid; grid-template-columns: repeat(3, minmax(0, 320px)); gap: 40px; justify-content: center; align-items: start; }
 .q-destination-screens > :nth-child(2) { margin-top: 80px; }
@@ -75,7 +77,7 @@
   .q-desktop-break { display: none; }
   .q-section-heading { grid-template-columns: 1fr; gap: 24px; margin-bottom: 48px; }
   .q-pair { gap: 32px; }
-  .q-wildlife { padding: 36px; grid-template-columns: 1fr 250px; gap: 32px; }
+  .q-wildlife { padding: 32px; grid-template-columns: minmax(0, 1fr) 230px; gap: 32px; }
   .q-trio { grid-template-columns: repeat(2, minmax(0, 320px)); gap: 40px 32px; }
   .q-trio > :nth-child(3) { margin-top: 0; grid-column: 1 / -1; width: min(100%, 320px); justify-self: center; }
 }

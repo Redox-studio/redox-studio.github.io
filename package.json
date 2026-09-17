@@ -8,15 +8,18 @@
   },
   "scripts": {
     "dev": "astro dev",
+    "assets:generate": "node scripts/generate-assets.mjs",
     "check": "astro check",
     "build": "astro check && astro build",
     "preview": "astro preview"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
     "astro": "7.3.3"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.0",
+    "sharp": "^0.35.4",
     "typescript": "^5.9.0"
   }
 }
