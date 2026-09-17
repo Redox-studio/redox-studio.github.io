@@ -1,0 +1,13 @@
+---
+interface Props {
+  name: string;
+  alt: string;
+  caption: string;
+  number: string;
+}
+const { name, alt, caption, number } = Astro.props;
+---
+<figure class="q-screen">
+  <img src={`/assets/qianli/${name}-final.png`} alt={alt} width="1206" height="2622" loading="lazy" decoding="async" />
+  <figcaption><span>{number}</span>{caption}</figcaption>
+</figure>

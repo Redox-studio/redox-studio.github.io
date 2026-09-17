@@ -1,0 +1,13 @@
+/* Source: QIAN/docs/color-system.md and ios/Qianli/Theme/QianliTheme.swift. */
+.qianli-colors {
+  --q-background: #061216;
+  --q-background-top: #0b2027;
+  --q-surface: #10242b;
+  --q-raised: #152c34;
+  --q-foreground: #edf5f6;
+  --q-muted: #9aaeb3;
+  --q-faint: #70868c;
+  --q-accent: #cfdde0;
+  --q-aqua: #5db9c4;
+  --q-border: #294047;
+}

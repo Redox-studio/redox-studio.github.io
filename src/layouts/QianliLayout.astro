@@ -1,0 +1,30 @@
+---
+import "../styles/global.css";
+import "../styles/qianli-tokens.css";
+import "../styles/qianli.css";
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="zh-CN" class="qianli-theme qianli-colors">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="什么时候，去哪潜？潜历把季节、签证、交通和行程放在一起，帮你决定下一次去哪。为 iPhone 设计的潜水目的地工具。" />
+    <meta name="theme-color" content="#061216" />
+    <link rel="canonical" href={canonical} />
+    <title>潜历 — 什么时候，去哪潜？</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳至主要内容</a>
+    <header class="q-nav q-wrap">
+      <a class="wordmark" href="/" aria-label="返回 Redox Studio 首页">REDOX STUDIO</a>
+      <nav aria-label="主导航"><a href="/#work">作品</a><a href="/about/">关于</a></nav>
+    </header>
+    <main id="main"><slot /></main>
+    <footer class="q-footer q-wrap">
+      <a class="wordmark" href="/">REDOX STUDIO</a>
+      <p>© 2026 Redox Studio</p>
+      <a href="/">返回工作室 <span aria-hidden="true">↗</span></a>
+    </footer>
+  </body>
+</html>

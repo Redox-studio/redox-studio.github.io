@@ -1,52 +1,97 @@
 ---
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import Placeholder from "../../components/Placeholder.astro";
+import QianliLayout from "../../layouts/QianliLayout.astro";
+import Screenshot from "../../components/QianliScreenshot.astro";
 ---
-
-<BaseLayout
-  title="潜历 — Redox Studio"
-  description="潜历，Redox Studio 的作品。产品介绍与素材正在整理中。"
->
-  <header class="page-intro product-hero">
-    <div>
-      <p class="eyebrow">Redox Studio / App</p>
-      <h1>潜历</h1>
-      <p class="lead muted">TODO · 产品简介待提供。</p>
-      <div class="cta-placeholder">
-        <button disabled>App Store · 待提供</button>
-        <p class="small muted">TODO · 确认商店链接与上架状态。</p>
+<QianliLayout>
+  <section class="q-hero q-wrap" aria-labelledby="q-title">
+    <div class="q-hero-copy">
+      <div class="q-identity">
+        <img src="/assets/qianli/appicon-1024.png" alt="潜历 App 图标" width="1024" height="1024" class="q-icon" />
+        <div><p class="q-name">潜历</p><p class="q-label">Qianli for iPhone</p></div>
+      </div>
+      <h1 id="q-title">什么时候，<br />去哪潜？</h1>
+      <p class="q-body">想潜水的时候，先看看世界上哪里正合适。<br class="q-desktop-break" />潜历把季节、签证、交通和行程放在一起，<br class="q-desktop-break" />帮你决定下一次去哪。</p>
+      <button class="q-store" type="button" disabled>App Store · 即将上线</button>
+      <p class="q-decision">月份 <span>×</span> 季节 <span>×</span> 签证 <span>×</span> 交通</p>
+    </div>
+    <div class="q-hero-visual">
+      <div class="q-hero-crop">
+        <img src="/assets/qianli/calendar-home-final.png" alt="潜历月历首页局部：从九月出发，查看全球潜水季节" width="1206" height="2622" fetchpriority="high" loading="eager" />
+      </div>
+      <p class="q-visual-note"><span aria-hidden="true">01 /</span> 从一个月份，找到下一站。</p>
+    </div>
+  </section>
+  <section class="q-section q-wrap q-time" aria-labelledby="time-title">
+    <div class="q-section-heading">
+      <p class="q-kicker">01 <span>/</span> 时间与季节</p>
+      <div>
+        <h2 id="time-title">先看时间，<br />再看地方。</h2>
+        <p class="q-body">不用先想好目的地。<br />选一个月份，看看世界上哪些地方正值好季节。</p>
+        <p class="q-aside">有具体假期，也可以直接按日期范围来看。</p>
       </div>
     </div>
-    <Placeholder kind="icon" label="App icon 占位" detail="正式图标待提供" />
-  </header>
-  <section class="section" aria-labelledby="screenshots-title">
-    <div class="section-heading">
-      <h2 id="screenshots-title">产品画面</h2>
-      <span class="eyebrow">01 / Screenshots</span>
-    </div>
-    <Placeholder
-      kind="screenshot"
-      label="Screenshot 区域占位"
-      detail="真实截图、展示顺序及图片说明待提供"
-    />
-  </section>
-  <section class="section" aria-labelledby="features-title">
-    <div class="section-heading">
-      <h2 id="features-title">产品特点</h2>
-      <span class="eyebrow">02 / Features</span>
-    </div>
-    <div class="feature-placeholder">
-      <span class="eyebrow">TODO</span>
-      <p>待提供已确认的功能标题、说明与对应素材。</p>
+    <div class="q-pair q-time-screens">
+      <Screenshot name="calendar-home" alt="月历首页：月份选择、全球目的地地图及潜水季节图例" caption="以月份，看看全世界" number="01.1" />
+      <Screenshot name="date-range" alt="日期范围选择：按具体假期查看潜水目的地" caption="以假期，找到合适的窗口" number="01.2" />
     </div>
   </section>
-  <section class="section product-links" aria-labelledby="info-title">
-    <h2 id="info-title">进一步了解</h2>
-    <a class="text-link" href="/qianli/privacy/">
-      Privacy Policy <span aria-hidden="true">↗</span>
-    </a>
-    <a class="text-link" href="/qianli/support/">
-      Support <span aria-hidden="true">↗</span>
-    </a>
+  <section class="q-section q-wrap" aria-labelledby="planner-title">
+    <div class="q-section-heading">
+      <p class="q-kicker">02 <span>/</span> 出发规划</p>
+      <div>
+        <h2 id="planner-title">假期定了，<br />目的地还没有。</h2>
+        <p class="q-body">从出发城市、日期、潜水方式和证书开始，<br class="q-desktop-break" />把候选目的地缩到真正适合这一趟的范围。</p>
+      </div>
+    </div>
+    <div class="q-pair q-planner-screens">
+      <Screenshot name="go-planner" alt="出发规划：设置出发城市、旅行日期、潜水方式及证书" caption="先把这一趟的条件选好" number="02.1" />
+      <Screenshot name="go-results" alt="出发规划结果：根据旅行条件筛选出的候选目的地" caption="再看看，哪里适合出发" number="02.2" />
+    </div>
+    <aside class="q-wildlife" aria-labelledby="wildlife-title">
+      <div><p class="q-kicker">另一种出发点</p><h3 id="wildlife-title">想看鲸鲨？</h3><p class="q-body">也可以从生物开始找。</p></div>
+      <Screenshot name="search-wildlife-whaleshark" alt="生物搜索：搜索鲸鲨，查看相关潜水目的地" caption="把想见的生物，作为出发点" number="02.3" />
+    </aside>
   </section>
-</BaseLayout>
+  <section class="q-section q-wrap" aria-labelledby="destination-title">
+    <div class="q-section-heading">
+      <p class="q-kicker">03 <span>/</span> 目的地功课</p>
+      <div>
+        <h2 id="destination-title">知道什么时候适合去，<br />还不够。</h2>
+        <p class="q-body">怎么去、需要什么水平、签证怎么办、<br class="q-desktop-break" />有哪些值得注意的地方，<br class="q-desktop-break" />才决定了一趟潜水旅行能不能真的成行。</p>
+      </div>
+    </div>
+    <div class="q-trio q-destination-screens">
+      <Screenshot name="site-detail-sanya" alt="三亚目的地详情：目的地概览与潜水信息" caption="了解目的地" number="03.1" />
+      <Screenshot name="practical-info" alt="目的地实用信息：体验口碑、价格参考和避坑提醒" caption="做好出发前的功课" number="03.2" />
+      <Screenshot name="transport-info" alt="目的地交通信息：抵达目的地的交通方式" caption="把怎么去也想清楚" number="03.3" />
+    </div>
+    <p class="q-boundary">潜历不替你推荐潜店或酒店，<br class="q-desktop-break" />只把目的地本身需要做的功课整理清楚。</p>
+  </section>
+  <section class="q-section q-wrap" aria-labelledby="trip-title">
+    <div class="q-section-heading">
+      <p class="q-kicker">04 <span>/</span> 行程与记录</p>
+      <div>
+        <h2 id="trip-title">从想去，<br />到真的去过。</h2>
+        <p class="q-body">决定好目的地以后，把它变成一趟行程。<br class="q-desktop-break" />出发前留好待办和提醒，<br class="q-desktop-break" />回来以后把潜次和照片留下来。</p>
+      </div>
+    </div>
+    <div class="q-trio q-trip-screens">
+      <Screenshot name="trip-list" alt="行程列表：保存的潜水旅行计划" caption="从一趟行程开始" number="04.1" />
+      <Screenshot name="trip-detail" alt="行程详情：出发前的计划、待办与提醒" caption="把计划留在手边" number="04.2" />
+      <Screenshot name="dive-history-photo" alt="潜水记录：旅行后留下的潜次与照片" caption="把下水的记忆留下来" number="04.3" />
+    </div>
+  </section>
+  <section class="q-final q-wrap" aria-labelledby="final-title">
+    <p class="q-kicker">下一站，等你决定</p>
+    <h2 id="final-title">下一次下水，<br />从这里开始。</h2>
+    <div class="q-identity">
+      <img src="/assets/qianli/appicon-1024.png" alt="" width="1024" height="1024" class="q-icon" loading="lazy" decoding="async" />
+      <div><p class="q-name">潜历</p><p class="q-label">Qianli for iPhone</p></div>
+    </div>
+    <button class="q-store" type="button" disabled>App Store · 即将上线</button>
+    <nav class="q-help" aria-label="潜历产品信息">
+      <a href="/qianli/privacy/">隐私政策 <span aria-hidden="true">↗</span></a>
+      <a href="/qianli/support/">支持与帮助 <span aria-hidden="true">↗</span></a>
+    </nav>
+  </section>
+</QianliLayout>

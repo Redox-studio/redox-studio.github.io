@@ -64,8 +64,16 @@ public/
     qianli/                  # 潜历正式素材
 ```
 
-页面共用导航、页脚、SEO 描述与 canonical URL。当前使用系统字体，无外部字体请求或客户端脚本。
+工作室及文档页共用导航与页脚；`/qianli/` 使用独立的 `QianliLayout` 与深海主题，保留工作室入口。各页均有 SEO 描述与 canonical URL。当前使用系统字体，无外部字体请求或客户端脚本。
 隐私和支持页面尚未完成，暂设 `noindex, follow`；填写并确认内容后，调整 `DocumentLayout.astro` 中的 `noindex`。
+
+## 潜历产品展示
+
+`src/styles/qianli-tokens.css` 对齐 QIAN 的 `docs/color-system.md` 和 `ios/Qianli/Theme/QianliTheme.swift`；`qianli.css` 仅作用于产品主题。首页只通过 `QianliArtwork.astro` 展示深色潜历作品卡，整体保留工作室暖白视觉。
+
+素材位于 `public/assets/qianli/`，原样复制自 QIAN `IOS` 分支的本地 RC：优先 `screenshots/rc-final/website/`，其中缺少的 `go-results`、`transport-info`、`trip-list`、`trip-detail` 使用 `app-store-like/` 内的同名 `-final.png`。App Icon 来自 `ios/Qianli/Resources/Assets.xcassets/AppIcon.appiconset/appicon-1024.png`。不修改 PNG；Hero 与首页卡片仅通过 CSS 裁切展示。
+
+产品页顺序为 Hero、时间与季节、出发规划（含鲸鲨搜索）、目的地功课、行程与记录、底部 CTA。手机宽度截图单列，正文展示区保留完整截图；图片均声明原始尺寸，Hero 主图优先加载，其余截图懒加载。暂无正式商店链接，两个 CTA 均为禁用按钮。
 
 ## 如何新增产品
 
@@ -78,7 +86,7 @@ public/
 
 ## 待提供内容
 
-- 潜历：正式图标、简介、真实截图及图片说明、已确认功能文案、App Store URL 与上架状态。
+- 潜历：正式 App Store URL 与上架状态；当前显示「App Store · 即将上线」。
 - 隐私：运营主体、适用范围、数据及用途、权限、第三方服务、存储与保留、安全、用户权利、未成年人、跨境情况、联系邮箱、政策日期和版本。全部依据产品事实逐项确认；当前页面不是最终政策。
 - 支持：正式邮箱、FAQ、数据管理说明、账户体系是否适用及相关指引、反馈渠道与处理方式。
 - 品牌素材可放入 `public/assets/redox/`。当前没有虚构人物、简历或未发布作品。
