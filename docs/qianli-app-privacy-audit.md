@@ -2,6 +2,8 @@
 
 审计日期：2026-09-17（Asia/Shanghai）。审计对象：本地 QIAN `IOS` 分支，HEAD `acc158d1333f30f8a3a6fb690682abc04218f029` **及当时未提交工作区**。官网文案针对当前实现，不代表已经发行。未修改 QIAN，也未执行 App Archive、真机权限测试、抓包或 App Store Connect 操作。
 
+联系方式更新（2026-09-17）：负责人已注册并确认一般联系 `hello@redox.studio`、潜历支持 `support@redox.studio`、隐私相关 `privacy@redox.studio`。官网已分别用于 About、Support 和 Privacy；下文旧邮箱只作为当时 App 源码审计证据保留。本次未修改 QIAN，App 内联系方式需另行同步。不根据邮箱域名推断邮件托管商或存储地区。
+
 ## A. 实际行为摘要与审计范围
 
 SwiftUI + SwiftData，本机数据库，`cloudKitDatabase: .none`，空 entitlements。用户无账号；目录、目的地图片和地图轮廓来自 bundle。存在可选前台定位、系统照片选择／原文件读取、保存分享图片的 add-only 权限、本地通知、用户发起的外部链接和文件导出。唯一解析到的第三方包为 ZIPFoundation 0.9.20（revision `22787ffb59de99e5dc1fbfe80b19c97a904ad48d`），用于本地 ZIP。
@@ -16,7 +18,7 @@ SwiftUI + SwiftData，本机数据库，`cloudKitDatabase: .none`，空 entitlem
 - 手写 Info.plist 不含用途说明，但 project.yml 和 Xcode build settings 会生成定位、照片读取、照片添加三项用途说明，不能只读静态 plist 得出“无权限”。
 - `handoff.md` 的 256 MiB 总包上限已经落后于实际 `TripBackupIO`：当前没有总字节上限；仍限制单 JSON 16 MiB、单照片 32 MiB／12000px、5000 文件条目和 20000 模型记录。网页不承诺旧总包上限。
 - PhotoLibraryImport 没有指定 `PHImageRequestOptions.version = .original`，PhotosPicker 也没有指定 `.current` 编码偏好。准确说法是“保存系统交付的文件字节”，不能保证拿到相册最初未经编辑或未经系统转码的文件。
-- 邮箱在 `PrivacyPolicyView:60` 已正式展示：`zzzv0325@163.com`。用户本轮确认继续使用，支持邮件仅处理 App 使用问题；未来域名邮箱尚未配置。
+- 审计时 App 在 `PrivacyPolicyView:60` 展示 `zzzv0325@163.com`；其后负责人提供了上述三个域名邮箱，官网已更新。支持邮件仅处理 App 使用问题。
 
 ### 证据索引
 
@@ -143,7 +145,7 @@ App 清单：`NSPrivacyTracking=false`；tracking domains 和 collected data 均
 | 系统文件与第三方 File Provider | 用户选定保存位置／备份文件，可含完整原图及 metadata | 无潜历账号／服务器；云端位置由用户选 |
 | 系统分享接收应用 | 用户选定接收者，接收生成的卡片 | 不是潜历社区；不自动发送 |
 | 外部资料网站 | 用户点击交通、资料来源、许可 URL | 不把本机记录附到 URL；网页自身处理另算 |
-| 支持邮箱（163.com） | 用户自行发信，发送方邮箱／正文／附件 | 已确认仅用于 App 使用问题；保留期限未定，不编造 |
+| 支持与隐私邮箱（自有域名，托管商未确认） | 用户自行发信，发送方邮箱／正文／附件 | 支持邮件仅用于 App 使用问题，隐私邮件处理相关问题或请求；保留期限未定，不编造 |
 | Apple 设备备份 | 操作系统根据用户设置备份 App 数据 | 源码未排除本地库／照片；不保证从不进入系统备份 |
 
 系统规则依据：[iCloud 备份内容](https://support.apple.com/en-au/108770)、[iPhone 存储／卸载与删除](https://support.apple.com/en-au/108429)。
@@ -151,7 +153,7 @@ App 清单：`NSPrivacyTracking=false`；tracking domains 和 collected data 均
 ## E. 仍需确认与实际限制
 
 1. **未回答的运营事实**：是否取得并使用 App Store Connect／TestFlight 提供的用户级诊断、反馈或其他报表，以及其身份关联程度。这影响最终 Diagnostics 等标签，源码无法确认。
-2. **支持邮件保留／删除规则**：用户确认用途和当前邮箱，但未给出固定期限或删除流程。因此网页只说明用途、可联系处理请求，不承诺具体清除时限。未来邮箱更换需同步 App 内政策与官网。
+2. **邮件保留／删除规则**：用户确认用途和三个域名邮箱，但未给出固定期限或删除流程。因此网页只说明用途、可联系处理请求，不承诺具体清除时限。官网已更新邮箱，App 内旧联系方式仍需另行同步。
 3. **发行包复核**：最终签名 Archive 的用途说明、entitlements、依赖和聚合 Privacy Report，不能用本轮静态审计或旧 Debug 文件代替。
 4. **系统照片取回边界**：真机有限照片权限、拒绝权限、iCloud 原图与格式 fallback 未在本轮交互验证。网页只承诺保存系统实际提供的字节。
 5. **定位触发描述**：已有授权下打开表单可能产生一次定位，已反映到官网；无后台持续定位。原 App 简版政策的“只有点…”过于绝对，本轮不改 App。
