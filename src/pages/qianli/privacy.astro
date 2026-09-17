@@ -1,0 +1,76 @@
+---
+import DocumentLayout from "../../layouts/DocumentLayout.astro";
+const sections = [
+  [
+    "适用范围与主体",
+    "确认本政策适用的产品版本、服务范围、运营主体及联系方式。",
+  ],
+  [
+    "数据类别与使用目的",
+    "逐项确认实际处理的数据、来源、使用目的，以及必要性；明确哪些处理在设备本地完成。",
+  ],
+  ["权限与设备访问", "确认产品实际申请的系统权限、用途、申请时机及关闭方式。"],
+  [
+    "第三方服务与数据共享",
+    "核实实际使用的 SDK、云服务与第三方接收方；说明处理范围及对应政策链接。",
+  ],
+  [
+    "数据存储、保留与安全",
+    "确认存储位置、保存期限、删除规则和实际采用的安全措施。",
+  ],
+  [
+    "用户选择与数据权利",
+    "确认访问、更正、导出、删除数据的适用范围与操作流程；如适用，补充账户注销流程。",
+  ],
+  ["未成年人", "确认适用年龄范围、未成年人数据处理方式及相关安排。"],
+  ["跨境数据处理", "确认是否涉及跨境传输，并按实际情况填写相关安排。"],
+  ["政策更新", "确认政策变更通知方式，维护生效日期、更新时间与版本记录。"],
+  ["联系我们", "填写经过确认的隐私联系邮箱及请求处理方式。"],
+];
+---
+
+<DocumentLayout
+  title="隐私政策"
+  english="Privacy Policy"
+  description="潜历隐私政策页面结构，具体条款待产品实际情况确认。"
+>
+  <div class="notice">
+    <strong>草稿 · 待确认</strong>
+    <p>
+      本页为政策结构占位，尚未构成最终隐私政策。以下 TODO
+      需依据产品实际情况逐项确认后替换。
+    </p>
+  </div>
+  <dl class="metadata">
+    <div>
+      <dt>生效日期</dt>
+      <dd>TODO</dd>
+    </div>
+    <div>
+      <dt>最后更新</dt>
+      <dd>TODO</dd>
+    </div>
+    <div>
+      <dt>政策版本</dt>
+      <dd>TODO</dd>
+    </div>
+  </dl>
+  <nav class="document-toc" aria-label="隐私政策目录">
+    <h2>目录</h2>
+    <ol>
+      {sections.map(([title], index) => (
+        <li>
+          <a href={`#policy-${index + 1}`}>{title}</a>
+        </li>
+      ))}
+    </ol>
+  </nav>
+  {sections.map(([title, detail], index) => (
+    <section id={`policy-${index + 1}`}>
+      <h2>
+        {String(index + 1).padStart(2, "0")} / {title}
+      </h2>
+      <p class="muted">TODO · {detail}</p>
+    </section>
+  ))}
+</DocumentLayout>

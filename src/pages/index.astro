@@ -1,0 +1,69 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Placeholder from "../components/Placeholder.astro";
+import { products } from "../data/products";
+---
+
+<BaseLayout
+  title="Redox Studio"
+  description="Redox Studio — 两位创作者共同制作游戏、APP 和数字体验的独立工作室。"
+>
+  <section class="home-hero" aria-labelledby="home-title">
+    <p class="eyebrow">Independent studio</p>
+    <h1 id="home-title">
+      REDOX
+      <br />
+      STUDIO<span class="title-dot">.</span>
+    </h1>
+    <div class="hero-bottom">
+      <p>
+        Games, apps and playful
+        <br />
+        digital experiences.
+      </p>
+      <a class="text-link" href="#work">
+        Explore our work <span aria-hidden="true">↙</span>
+      </a>
+    </div>
+  </section>
+  <section id="work" class="section work-section" aria-labelledby="work-title">
+    <div class="section-heading">
+      <h2 id="work-title">Selected work</h2>
+      <span class="eyebrow">01 / Work</span>
+    </div>
+    {products.map((product, index) => (
+      <article class="work-card">
+        <a
+          class="work-art"
+          href={product.href}
+          aria-label={`了解${product.name}`}
+        >
+          <Placeholder label="产品视觉占位" detail="产品素材待提供" />
+        </a>
+        <div class="work-info">
+          <p class="eyebrow">
+            {String(index + 1).padStart(2, "0")} / {product.category}
+          </p>
+          <h3>
+            <a href={product.href}>{product.name}</a>
+          </h3>
+          <p class="muted">{product.description}</p>
+          <a class="text-link" href={product.href}>
+            了解{product.name} <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </article>
+    ))}
+  </section>
+  <section class="studio-note">
+    <p class="eyebrow">Small studio. Shared curiosity.</p>
+    <p>
+      两位创作者。
+      <br />
+      游戏、APP，以及数字体验。
+    </p>
+    <a class="text-link" href="/about/">
+      About the studio <span aria-hidden="true">↗</span>
+    </a>
+  </section>
+</BaseLayout>

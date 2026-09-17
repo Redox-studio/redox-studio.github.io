@@ -1,0 +1,26 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+interface Props {
+  title: string;
+  english: string;
+  description: string;
+}
+const { title, english, description } = Astro.props;
+---
+
+<BaseLayout
+  title={`${title} — 潜历 · Redox Studio`}
+  description={description}
+  noindex
+>
+  <header class="page-intro document-intro">
+    <a class="back-link" href="/qianli/">
+      ← 潜历
+    </a>
+    <p class="eyebrow">{english}</p>
+    <h1>{title}</h1>
+  </header>
+  <div class="document">
+    <slot />
+  </div>
+</BaseLayout>

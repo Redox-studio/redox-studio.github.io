@@ -1,0 +1,16 @@
+---
+interface Props {
+  label: string;
+  detail?: string;
+  kind?: "artwork" | "icon" | "screenshot";
+}
+const { label, detail, kind = "artwork" } = Astro.props;
+---
+
+<div class:list={["placeholder", `placeholder--${kind}`]}>
+  <span class="placeholder-mark" aria-hidden="true">
+    +
+  </span>
+  <span class="placeholder-label">{label}</span>
+  {detail && <span class="small muted">TODO · {detail}</span>}
+</div>

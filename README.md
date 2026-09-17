@@ -1,2 +1,86 @@
-# redox-studio.github.io
-Official website of Redox Studio.
+# Redox Studio
+
+Redox Studio 品牌官网。Astro 7 + TypeScript + 原生 CSS，静态生成至 GitHub Pages。
+正式地址：https://redox.studio 。不使用 SSR、数据库、UI 框架、CMS 或跟踪服务。
+
+## 本地开发
+
+推荐 Node.js 24（`.nvmrc`）；最低 Node.js 22.12.0。
+
+```sh
+npm install
+npm run dev
+```
+
+开发地址以终端输出为准，默认为 http://localhost:4321 。
+
+```sh
+npm run check    # Astro / TypeScript 检查
+npm run build    # 类型检查与静态构建，输出 dist/
+npm run preview  # 本地预览构建结果
+```
+
+提交 `package-lock.json`，后续可用 `npm ci` 按锁文件复现依赖。不要提交 `dist/` 或 `node_modules/`。
+
+## GitHub Pages 部署
+
+使用 [Astro 官方 GitHub Pages Action](https://github.com/withastro/action)：
+`.github/workflows/deploy.yml` 在推送到 `main` 或手动运行时执行。
+`withastro/action@v6` 安装依赖、运行 build（含类型检查）、上传静态产物；
+`actions/deploy-pages@v5` 将产物部署到 `github-pages` 环境。Node 版本为 24。
+工作流只使用 GitHub 提供的权限令牌，无需另设部署密钥。
+
+首次切换时由仓库管理员在 **Settings → Pages → Build and deployment → Source** 选择 **GitHub Actions**（如果已经选择则无需修改）。
+保留 **Custom domain: redox.studio** 与现有 **Enforce HTTPS**；不要清空或重设 Custom Domain，也不需要修改 DNS。
+本仓库工作流不调用 API 修改 Pages Custom Domain。若组织限制 Actions，需允许工作流中使用的官方 Actions。
+
+`astro.config.mjs` 设置 `site: 'https://redox.studio'`，不设置仓库 `base` 路径。
+根目录原有 `CNAME` 保留，`public/CNAME` 同步保留相同域名并复制到构建产物。
+以后如需调整域名，应由管理员独立确认，不能仅依赖文件自动修改 GitHub 设置。
+
+本次仅准备代码；未 push、未触发远程部署、未更改仓库 Pages 设置。首次部署后应检查工作流结果及五个正式 URL。
+
+## 网站结构
+
+```text
+.github/workflows/deploy.yml  # 官方 Pages 构建与部署
+astro.config.mjs             # 静态输出、正式域名、尾斜杠
+src/
+  components/                # Header、Footer、Placeholder
+  data/products.ts           # 类型化作品列表
+  layouts/                   # BaseLayout、DocumentLayout
+  pages/
+    index.astro              # /
+    about.astro              # /about/
+    qianli/
+      index.astro            # /qianli/
+      privacy.astro          # /qianli/privacy/
+      support.astro          # /qianli/support/
+  styles/global.css          # 共用视觉与响应式样式
+public/
+  CNAME
+  assets/
+    redox/                   # 工作室素材
+    qianli/                  # 潜历正式素材
+```
+
+页面共用导航、页脚、SEO 描述与 canonical URL。当前使用系统字体，无外部字体请求或客户端脚本。
+隐私和支持页面尚未完成，暂设 `noindex, follow`；填写并确认内容后，调整 `DocumentLayout.astro` 中的 `noindex`。
+
+## 如何新增产品
+
+1. 在 `src/data/products.ts` 添加作品名、类型（App / Game / Digital experience）、根路径和已确认简介。首页会自动显示新作品。
+2. 新建 `src/pages/<slug>/index.astro`，复用 `BaseLayout`；可参考潜历页结构。
+3. 将正式图片放到 `public/assets/<slug>/`，以 `/assets/<slug>/...` 引用；补充真实图片描述，不生成虚构截图。
+4. 根据产品需要添加 privacy / support 页面，并使用产品专属文案及链接。
+5. 替换首页卡片素材占位时，可扩展 `Product` 的素材字段并更新首页渲染。
+6. 运行 `npm run build`，检查桌面/移动端、链接和新增路由后提交；经确认后推送 `main` 即部署。
+
+## 待提供内容
+
+- 潜历：正式图标、简介、真实截图及图片说明、已确认功能文案、App Store URL 与上架状态。
+- 隐私：运营主体、适用范围、数据及用途、权限、第三方服务、存储与保留、安全、用户权利、未成年人、跨境情况、联系邮箱、政策日期和版本。全部依据产品事实逐项确认；当前页面不是最终政策。
+- 支持：正式邮箱、FAQ、数据管理说明、账户体系是否适用及相关指引、反馈渠道与处理方式。
+- 品牌素材可放入 `public/assets/redox/`。当前没有虚构人物、简历或未发布作品。
+
+搜索 `TODO` 可定位页面中的待补充项。替换内容后移除相应占位；商店 URL 确认后将禁用按钮换为真实链接。
