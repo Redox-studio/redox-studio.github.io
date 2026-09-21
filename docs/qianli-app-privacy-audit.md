@@ -187,3 +187,23 @@ App 清单：`NSPrivacyTracking=false`；tracking domains 和 collected data 均
 | `ios/Qianli/Views/Settings/TripBackupSection.swift` | `efe0fdac5931bffe7cb323a4a6ff55e90de281a384f7545f505a30a1fbf00536` |
 | `ios/Qianli/Services/TripDocumentExporter.swift` | `7b9d84cca17264a93c5794e66c211cdf0b0fa9475bf869b695c9dd837eab3401` |
 | `ios/Qianli/Resources/PrivacyInfo.xcprivacy` | `39ac407928f5dc3f23349ee9bb2e6752019c612c0414a269345d18e3c7268844` |
+
+
+## 2026-09-21 产品优化补充
+
+本节补充审计原始快照之后 QIAN `IOS` 分支已提交的产品能力；原文中的 2026-09-17 HEAD、代码行号和 35 项表格保留为历史证据，不应覆盖以下最新行为。当前审阅到 QIAN HEAD `f118805`，工作区另有 `artifacts/ui-review/` 和本机工程文件未作为产品能力依据。
+
+- 月历改为“月份 → 当月适合目的地 → 当月生物事件”的 Time → Destination 结构，按最佳／良好／可潜分组；不再使用旧的全球地图概览作为月历主结构。
+- 潜点 Finder 现在支持文本搜索、地区／特色／月份／生物 Quick Filter、收藏、列表／Apple MapKit 地图切换、名称／国家地区／建议天数／月份适合度排序，并提供最多两个目的地比较。地图不请求用户当前位置；MapKit 底图可能联网或使用系统缓存。
+- 目的地详情新增附近目的地概览与完整地图，范围 100／300／500 km，按目的地坐标直线距离计算；不代表交通路线。
+- 出发流程要求显式日期、出发城市、活动方式及水肺证书（适用时），结果默认展示 6 个、可展开全部；排序为季节优先、同档常见直飞、建议天数余量。没有实时余票、房态、天气或票务 API。
+- 行程页按正在进行／接下来／过去年份组织，顶部提供待办、笔记、记一潜、照片快捷入口；当前行程可确认后切换待办模板，原清单及完成状态会被替换。
+- 照片新增独立顺序、编辑拖动、行程封面、查看器保存原照片、多图分享（独立封面，最多 8 张附图）；ZIP 携带照片顺序与可选 `coverPhotoID`；照片记录缺少必需 `order` 的早期备份无法解码。
+- 目的地详情新增“在小红书搜索”：尝试打开小红书 App，失败时打开小红书网站首页；搜索结果不回传、不缓存。
+- App 内隐私页已加入 Apple MapKit 说明；官网 Privacy 版本更新为 1.1（2026-09-21），Support 已改写对应操作路径。
+
+这轮产品优化没有引入账号、CloudKit、远程数据库、用户定位地图、广告、Analytics、ATT、崩溃上报或商户数据库。当前官网未把测试截图中的具体地点／时间当作产品承诺。
+
+源码定位：`Views/Sites/SitesMapView.swift`（makeUIView）、`NearbyDestinations.swift`（NearbyMapOverview）、`DestinationComparison.swift`（ComparisonSelection）、`Services/ExternalXiaohongshuSearch.swift`（open）、`Services/TripPhotoStore.swift`（TripPhotoOrder / TripPhotoCover）、`Services/TripExport.swift`（Photo.order / Trip.coverPhotoID）、`Services/TripImport.swift`（validate / restore）、`Views/Plan/TripDetailView.swift`（照片编辑 / TripChecklistTemplateSheet）、`ShareComposerView.swift`（CoverSelection / additionalPhotosSection）。
+
+Apple 口径复核：[地图服务说明](https://www.apple.com/legal/privacy/data/en/apple-maps/)、[App Privacy](https://developer.apple.com/app-store/app-privacy-details/)（2026-09-21）。MapKit 系统服务的数据处理应与开发者取得的数据分开，不将其直接推断为潜历收集位置；原有支持邮件、Apple 后台诊断及发行包待确认项仍未关闭。

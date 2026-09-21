@@ -67,17 +67,17 @@ public/
 工作室及文档页共用导航与页脚；`/qianli/` 使用独立的 `QianliLayout` 与深海主题，保留工作室入口。两个 Layout 通过 `SEO.astro` 共用 description、canonical、robots、OG、Twitter Card 和站点图标；URL 由 `Astro.site` 解析。首页提供 Organization，潜历产品页提供 SoftwareApplication（iOS 26 or later），文档页不声明为软件。当前使用系统字体，无外部字体请求或客户端执行脚本。
 
 `@astrojs/sitemap` 构建生成 `sitemap-index.xml` 与 `sitemap-0.xml`，收录五个正式页面；`public/robots.txt` 允许全站抓取并指向索引。`src/pages/404.astro` 生成 `404.html`，声明 `noindex` 并排除于 sitemap。发布验收结果见 [Website Release Polish](docs/website-release-polish.md)。
-隐私和支持页通过 `DocumentLayout` 复用潜历深色主题，采用紧凑长文布局；已移除草稿与 `noindex`。当前政策版本为 1.0，生效／更新日期为 2026-09-17。源码依据、35 项隐私事实表及 App Privacy 待确认事项见 `docs/qianli-app-privacy-audit.md`。
+隐私和支持页通过 `DocumentLayout` 复用潜历深色主题，采用紧凑长文布局；已移除草稿与 `noindex`。当前政策版本为 1.1，生效／更新日期为 2026-09-21。源码依据、35 项隐私事实表及 App Privacy 待确认事项见 `docs/qianli-app-privacy-audit.md`。
 
 ## 潜历产品展示
 
 `src/styles/qianli-tokens.css` 对齐 QIAN 的 `docs/color-system.md` 和 `ios/Qianli/Theme/QianliTheme.swift`；`qianli.css` 仅作用于产品主题。首页只通过 `QianliArtwork.astro` 展示深色潜历作品卡，整体保留工作室暖白视觉。
 
-素材位于 `public/assets/qianli/`，原样复制自 QIAN `IOS` 分支的本地 RC：优先 `screenshots/rc-final/website/`，其中缺少的 `go-results`、`transport-info`、`trip-list`、`trip-detail` 使用 `app-store-like/` 内的同名 `-final.png`。App Icon 来自 `ios/Qianli/Resources/Assets.xcassets/AppIcon.appiconset/appicon-1024.png`。不修改 PNG；Hero 与首页卡片仅通过 CSS 裁切展示。
+素材位于 `public/assets/qianli/`。2026-09-21 更新的月历、潜点 Finder、出发规划、附近地图和行程列表图来自 QIAN `IOS` 分支优化验收截图，来源与哈希记录见 `docs/qianli-screenshot-sources.json`；其余目的地详情、交通、照片记录图继续使用 RC 素材。App Icon 来自 `ios/Qianli/Resources/Assets.xcassets/AppIcon.appiconset/appicon-1024.png`。不修改 App 截图内容；网页只用真实画面和 CSS 裁切展示。
 
 产品页顺序为 Hero、时间与季节、出发规划（含鲸鲨搜索）、目的地功课、行程与记录、底部 CTA。手机宽度截图单列，正文展示区保留完整截图；图片均声明尺寸，Hero 主图 `eager` / `fetchpriority="high"`，其余截图 `lazy`，全部异步解码。暂无正式商店链接，两个 CTA 均为禁用按钮。
 
-网页加载 `public/assets/qianli/web/` 中的 WebP 派生图：11 张截图各有 480 / 840 / 1206px 三档，按 `srcset` / `sizes` 选择，App Icon 为 192px。原始 PNG 全部保留。两套 1200×630 分享图在 `public/assets/og/`；站点 favicon 使用独立的极简 R，不使用潜历 App Icon。
+网页加载 `public/assets/qianli/web/` 中的 WebP 派生图：截图各有 480 / 840 / 1206px 三档，按 `srcset` / `sizes` 选择，App Icon 为 192px。原始 PNG 全部保留。两套 1200×630 分享图在 `public/assets/og/`；站点 favicon 使用独立的极简 R，不使用潜历 App Icon。
 
 更换截图或调整分享图后可运行 `npm run assets:generate`，再执行 check / build。生成脚本使用 Sharp 和本机系统字体（当前图卡在 macOS、PingFang SC / Songti SC 下生成）；输出文件随仓库保存，正常开发、CI 构建不需要重新生成，也不依赖外部字体或图片服务。
 
@@ -92,8 +92,8 @@ public/
 
 ## 待提供内容
 
-- 潜历：正式 App Store URL 与上架状态；当前显示「App Store · 即将上线」。
-- 联系方式：一般联系 `hello@redox.studio`（About）；潜历支持 `support@redox.studio`；隐私相关 `privacy@redox.studio`。支持邮件只处理 App 使用问题，隐私邮件处理隐私问题或信息处理请求。官网已更新，QIAN App 内旧邮箱需另行同步；邮件保留／删除规则及 Apple 后台诊断使用仍需负责人确认，见审计文档。网站内容已按当前代码完成，不代表 App Store 标签或发行包验收已完成。
+- 潜历：正式 App Store URL 与上架状态；当前显示「App Store · 即将上线」。产品页已同步 2026-09-21 的月历、Finder、出发、附近地图、行程照片与多图分享能力；Privacy / Support 已同步 MapKit、外部小红书入口、照片封面与备份格式变化。
+- 联系方式：一般联系 `hello@redox.studio`（About）；潜历支持 `support@redox.studio`；隐私相关 `privacy@redox.studio`。支持邮件只处理 App 使用问题，隐私邮件处理隐私问题或信息处理请求。官网与当前 QIAN App 联系方式已一致；邮件保留／删除规则及 Apple 后台诊断使用仍需负责人确认，见审计文档。网站内容已按当前代码完成，不代表 App Store 标签或发行包验收已完成。
 - 品牌素材可放入 `public/assets/redox/`。当前没有虚构人物、简历或未发布作品。
 
 当前构建的用户可见页面无 TODO / Placeholder；开发用占位组件和技术文档中的说明保留。商店 URL 确认并正式上架后，再将禁用按钮换为真实链接。

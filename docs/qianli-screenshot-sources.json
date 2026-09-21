@@ -1,0 +1,37 @@
+{
+  "updated": "2026-09-21",
+  "qianliCommit": "f118805",
+  "sources": [
+    {
+      "asset": "calendar-home-final.png",
+      "source": "/tmp/qianli-root-flow/screenshots/root-月历.png",
+      "sha256": "a56998d3cc0032a5fb2889bfea0285f55a8d33624d5b6ab2901db4d49c5dde52"
+    },
+    {
+      "asset": "finder-final.png",
+      "source": "/tmp/qianli-root-flow/screenshots/root-潜点.png",
+      "sha256": "31a1ac1a543676b468b327b860f6b01f1be475f99bdb8295e0fe61842369d5c7"
+    },
+    {
+      "asset": "go-planner-final.png",
+      "source": "/tmp/qianli-root-flow/screenshots/go-animated-form.png",
+      "sha256": "5a2d578cc6d83f0aaf2dc40fcb7e7d3fd85360b021baba1a749dec5cc8776a58"
+    },
+    {
+      "asset": "go-results-final.png",
+      "source": "/tmp/qianli-root-flow/screenshots/go-animated-results.png",
+      "sha256": "9db700a908ddd0d489ad7d1970df16a0e5b4d1be915d4e59474793f959b00fda"
+    },
+    {
+      "asset": "site-detail-sanya-final.png",
+      "source": "/tmp/qianli-nearby/screenshots/overview.png",
+      "sha256": "123f6718f6ceb2a7300fc6844202e4769e54d346396944856f62c9768fb82467"
+    },
+    {
+      "asset": "trip-list-final.png",
+      "source": "/tmp/qianli-go-trips/screenshots/trips-upcoming-first.png",
+      "sha256": "846fdca6900760b642e0767d03d9895acdbb8e9aaabaea4c6ecfdbc8977a70f6"
+    }
+  ],
+  "note": "原始 PNG 在本轮复制时记录哈希；/tmp 是其他 QIAN 验收任务可重写的路径，交付依据为本仓库保存的 PNG 及 sha256，不以临时路径的未来内容为准。"
+}

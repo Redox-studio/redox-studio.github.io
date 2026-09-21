@@ -17,7 +17,7 @@ import QianliImage from "../../components/QianliImage.astro";
     </div>
     <div class="q-hero-visual">
       <div class="q-hero-crop">
-        <QianliImage name="calendar-home" alt="潜历月历首页局部：从九月出发，查看全球潜水季节" sizes="(max-width: 430px) calc(100vw - 80px), (max-width: 600px) 350px, (max-width: 800px) 42vw, (max-width: 1100px) 36vw, 410px" priority />
+        <QianliImage name="calendar-home" alt="潜历月历首页局部：九月适合去哪，按最佳、良好、可潜浏览目的地" sizes="(max-width: 430px) calc(100vw - 80px), (max-width: 600px) 350px, (max-width: 800px) 42vw, (max-width: 1100px) 36vw, 410px" priority />
       </div>
       <p class="q-visual-note"><span aria-hidden="true">01 /</span> 从一个月份，找到下一站。</p>
     </div>
@@ -27,12 +27,12 @@ import QianliImage from "../../components/QianliImage.astro";
       <p class="q-kicker">01 <span>/</span> 时间与季节</p>
       <div>
         <h2 id="time-title">先看时间，<br />再看地方。</h2>
-        <p class="q-body">不用先想好目的地。<br />选一个月份，看看世界上哪些地方正值好季节。</p>
-        <p class="q-aside">有具体假期，也可以直接按日期范围来看。</p>
+        <p class="q-body">不用先想好目的地。<br />选一个月份，按最佳、良好、可潜看看哪些地方正合适，也看看这个月能遇见什么生物。</p>
+        <p class="q-aside">有具体假期，就到“出发”按日期范围来找。</p>
       </div>
     </div>
     <div class="q-pair q-time-screens">
-      <Screenshot name="calendar-home" alt="月历首页：月份选择、全球目的地地图及潜水季节图例" caption="以月份，看看全世界" number="01.1" />
+      <Screenshot name="calendar-home" alt="月历首页：月份选择、季节分组与目的地卡片" caption="以月份，看看哪里正合适" number="01.1" />
       <Screenshot name="date-range" alt="日期范围选择：按具体假期查看潜水目的地" caption="以假期，找到合适的窗口" number="01.2" />
     </div>
   </section>
@@ -41,7 +41,8 @@ import QianliImage from "../../components/QianliImage.astro";
       <p class="q-kicker">02 <span>/</span> 出发规划</p>
       <div>
         <h2 id="planner-title">假期定了，<br />目的地还没有。</h2>
-        <p class="q-body">从出发城市、日期、潜水方式和证书开始，<br class="q-desktop-break" />把候选目的地缩到真正适合这一趟的范围。</p>
+        <p class="q-body">先定日期，再选出发城市和潜水方式。<br class="q-desktop-break" />结合水肺证书、季节和建议天数，<br class="q-desktop-break" />把候选目的地缩到适合这一趟的范围。</p>
+        <p class="q-aside">先看季节，同档再看常见直飞与天数余量。结果可展开，也可随时修改条件。</p>
       </div>
     </div>
     <div class="q-pair q-planner-screens">
@@ -49,8 +50,8 @@ import QianliImage from "../../components/QianliImage.astro";
       <Screenshot name="go-results" alt="出发规划结果：根据旅行条件筛选出的候选目的地" caption="再看看，哪里适合出发" number="02.2" />
     </div>
     <aside class="q-wildlife" aria-labelledby="wildlife-title">
-      <div><p class="q-kicker">另一种出发点</p><h3 id="wildlife-title">想看鲸鲨？</h3><p class="q-body">也可以从生物开始找。</p></div>
-      <Screenshot name="search-wildlife-whaleshark" alt="生物搜索：搜索鲸鲨，查看相关潜水目的地" caption="把想见的生物，作为出发点" number="02.3" />
+      <div><p class="q-kicker">另一种出发点</p><h3 id="wildlife-title">想看鲸鲨？</h3><p class="q-body">也可以从生物开始找。<br />在“潜点”里组合地区、特色、月份和生物，切换列表或地图，再把两个候选放在一起比较。</p></div>
+      <Screenshot name="finder" alt="潜点查找：地区、特色、月份、生物筛选，以及排序、收藏和比较入口" caption="从你的条件，找到候选目的地" number="02.3" />
     </aside>
   </section>
   <section class="q-section q-wrap" aria-labelledby="destination-title">
@@ -66,6 +67,10 @@ import QianliImage from "../../components/QianliImage.astro";
       <Screenshot name="practical-info" alt="目的地实用信息：体验口碑、价格参考和避坑提醒" caption="做好出发前的功课" number="03.2" />
       <Screenshot name="transport-info" alt="目的地交通信息：抵达目的地的交通方式" caption="把怎么去也想清楚" number="03.3" />
     </div>
+    <div class="q-product-notes">
+      <div><h3>在地图上看看周围。</h3><p>从目的地详情打开附近地图，查看 100、300 或 500 公里内其他已收录目的地。点标记看预览，再决定下一站。</p></div>
+      <div><h3>两个候选，放在一起看。</h3><p>比较所选月份的季节、建议天数、交通、资格、生物窗口和限制，不用来回翻页。</p></div>
+    </div>
     <p class="q-boundary">潜历不替你推荐潜店或酒店，<br class="q-desktop-break" />只把目的地本身需要做的功课整理清楚。</p>
   </section>
   <section class="q-section q-wrap" aria-labelledby="trip-title">
@@ -76,10 +81,13 @@ import QianliImage from "../../components/QianliImage.astro";
         <p class="q-body">决定好目的地以后，把它变成一趟行程。<br class="q-desktop-break" />出发前留好待办和提醒，<br class="q-desktop-break" />回来以后把潜次和照片留下来。</p>
       </div>
     </div>
-    <div class="q-trio q-trip-screens">
-      <Screenshot name="trip-list" alt="行程列表：保存的潜水旅行计划" caption="从一趟行程开始" number="04.1" />
-      <Screenshot name="trip-detail" alt="行程详情：出发前的计划、待办与提醒" caption="把计划留在手边" number="04.2" />
-      <Screenshot name="dive-history-photo" alt="潜水记录：旅行后留下的潜次与照片" caption="把下水的记忆留下来" number="04.3" />
+    <div class="q-pair q-trip-screens">
+      <Screenshot name="trip-list" alt="行程列表：接下来的旅行、待办进度和潜水记录入口" caption="先处理眼前这一趟" number="04.1" />
+      <Screenshot name="dive-history-photo" alt="潜水记录：旅行后留下的潜次与照片" caption="把下水的记忆留下来" number="04.2" />
+    </div>
+    <div class="q-product-notes">
+      <div><h3>按自己的顺序整理。</h3><p>待办可以切换模板，照片可以拖动排序、选作行程封面，也能将保存的原照片存回相册。</p></div>
+      <div><h3>把这一趟分享出去。</h3><p>单独选择分享封面，最多再选 8 张附图，把笔记、潜次和照片生成一张长图。自己的记录留在本机，迁移时用 ZIP 备份。</p></div>
     </div>
   </section>
   <section class="q-final q-wrap" aria-labelledby="final-title">
